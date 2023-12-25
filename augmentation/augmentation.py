@@ -42,7 +42,7 @@ class DataAugmentForObjectDetection():
                  crop_rate=0.5, shift_rate=0.5, change_light_rate=0.5,
                  add_noise_rate=0.5, flip_rate=0.5,
                  cutout_rate=0.5, cut_out_length=50, cut_out_holes=1, cut_out_threshold=0.5,
-                 is_addNoise=True, is_changeLight=True, is_cutout=True, is_rotate_img_bbox=True,
+                 is_addNoise=False, is_changeLight=False, is_cutout=True, is_rotate_img_bbox=True,
                  is_crop_img_bboxes=True, is_shift_pic_bboxes=True, is_filp_pic_bboxes=True):
  
         # 配置各个操作的属性
