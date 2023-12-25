@@ -1,0 +1,26 @@
+<annotation>
+  <folder>augmentation/images</folder>
+  <filename>00678_5.jpg</filename>
+  <path>augmentation/images\00678_5.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>960</width>
+    <height>600</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>class4</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>435</xmin>
+      <ymin>387</ymin>
+      <xmax>554</xmax>
+      <ymax>445</ymax>
+    </bndbox>
+  </object>
+</annotation>
