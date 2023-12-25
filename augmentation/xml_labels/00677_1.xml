@@ -7,7 +7,7 @@
   </source>
   <size>
     <width>725</width>
-    <height>460</height>
+    <height>489</height>
     <depth>3</depth>
   </size>
   <segmented>0</segmented>
@@ -17,10 +17,10 @@
     <truncated>0</truncated>
     <difficult>0</difficult>
     <bndbox>
-      <xmin>357</xmin>
-      <ymin>378</ymin>
-      <xmax>444</xmax>
-      <ymax>421</ymax>
+      <xmin>545</xmin>
+      <ymin>77</ymin>
+      <xmax>580</xmax>
+      <ymax>117</ymax>
     </bndbox>
   </object>
 </annotation>
