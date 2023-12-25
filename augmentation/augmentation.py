@@ -493,7 +493,7 @@ if __name__ == '__main__':
  
     # 获取相关参数
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source_img_path', type=str, default='D:/Goodluck_babies_VisAlgae23/dataset/train/images')
+    parser.add_argument('--source_img_path', type=str, default='D:/Goodluck_babies_VisAlgae23/augmentation/images')
     parser.add_argument('--source_xml_path', type=str, default='D:/Goodluck_babies_VisAlgae23/augmentation/xml_labels')
     parser.add_argument('--save_img_path', type=str, default='augmentation/images')
     parser.add_argument('--save_xml_path', type=str, default='augmentation/xml_labels')

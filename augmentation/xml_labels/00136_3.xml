@@ -7,7 +7,7 @@
   </source>
   <size>
     <width>1505</width>
-    <height>485</height>
+    <height>596</height>
     <depth>3</depth>
   </size>
   <segmented>0</segmented>
@@ -17,10 +17,10 @@
     <truncated>0</truncated>
     <difficult>0</difficult>
     <bndbox>
-      <xmin>1447</xmin>
-      <ymin>278</ymin>
-      <xmax>1482</xmax>
-      <ymax>302</ymax>
+      <xmin>1063</xmin>
+      <ymin>141</ymin>
+      <xmax>1098</xmax>
+      <ymax>165</ymax>
     </bndbox>
   </object>
   <object>
@@ -29,10 +29,10 @@
     <truncated>0</truncated>
     <difficult>0</difficult>
     <bndbox>
-      <xmin>1401</xmin>
-      <ymin>275</ymin>
-      <xmax>1452</xmax>
-      <ymax>328</ymax>
+      <xmin>1017</xmin>
+      <ymin>120</ymin>
+      <xmax>1067</xmax>
+      <ymax>171</ymax>
     </bndbox>
   </object>
 </annotation>
