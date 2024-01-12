@@ -136,7 +136,7 @@ class RandomGenAugmenter(torch.nn.Module):
         self.edge_constraint = edge_constraint
         self.label_names = label_names
     
-    def forward(self, image: torch.tensor, annot) -> tuple:
+    def forward(self, new_id) -> tuple:
         """Generate new sample
 
         Args:
@@ -187,7 +187,7 @@ class RandomGenAugmenter(torch.nn.Module):
         annot_new["boxes"] = BoundingBoxes(boxes, format="XYXY", 
                                            canvas_size=(image_bg_h, image_bg_w))
         annot_new["labels"] = labels
-        annot_new["image_id"] = annot["image_id"]
+        annot_new["image_id"] = new_id
         annot_new["area"] = area
         annot_new["iscrowd"] = iscrowd
 
@@ -242,5 +242,5 @@ class RandomGenAugmenter(torch.nn.Module):
 if __name__ == "__main__":
     algae_dataset = AlgaeDataset("train")
     sample = algae_dataset[4]
-    # print(sample[1])
+    print(sample[1])
     algae_dataset.plot_image_annot(sample[0], sample[1])
