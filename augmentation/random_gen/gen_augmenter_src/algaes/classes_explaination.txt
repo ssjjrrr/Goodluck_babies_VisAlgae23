@@ -1,5 +1,5 @@
 chlorella:小球藻
-Dunaliella salina:盐藻
+Dunaliella salina:杜氏盐藻
 Haematococcus pluvialis:雨生红球藻
 Platymonas:扁藻
 Porphyridium:紫球藻

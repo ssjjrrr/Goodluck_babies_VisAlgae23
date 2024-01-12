@@ -120,8 +120,8 @@ class RandomGenAugmenter(torch.nn.Module):
                  label_dist=torch.tensor([0.1, 0.1, 0.1, 0.1, 0.1, 0.1]),
                  max_objs=4,
                  edge_constraint=0.2,
-                 label_names=["background", "Platymonas", "Chlorella", "Dunaliella salina",
-                              "Zooxanthella", "Porphyridium", "Haematococcus pluvialis"]):
+                 label_names=["background", "0Platymonas", "1Chlorella", "2Dunaliella salina",
+                              "3Zooxanthella", "4Porphyridium", "5Haematococcus pluvialis"]):
         """
         Args:
             label_dist (tensor, optional): sampling prob. dist. for each label
@@ -172,7 +172,7 @@ class RandomGenAugmenter(torch.nn.Module):
             boxes[index, :] = torch.tensor([xmin, ymin, 
                                             xmin+image_algae_w, ymin+image_algae_h])
             labels[index] = chosen_labels[index] + 1
-
+            
             # Blend algaes into the background
             image_bg = self.blend_bg_algae(image_bg, image_algae, (xmin, ymin))
         
