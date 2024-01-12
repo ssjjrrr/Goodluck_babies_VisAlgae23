@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--root_dir', default='D:/Goodluck_babies_VisAlgae23/dataset/train',type=str, help="root path of images and labels, include ./images and ./labels and classes.txt")
+parser.add_argument('--root_dir', default='D:/Goodluck_babies_VisAlgae23/aug_dataset',type=str, help="root path of images and labels, include ./images and ./labels and classes.txt")
 parser.add_argument('--save_path', type=str,default='./train.json', help="if not split the dataset, give a path to a json file")
 parser.add_argument('--random_split', action='store_true', help="random split the dataset, default ratio is 8:1:1")
 parser.add_argument('--split_by_file', action='store_true', help="define how to split the dataset, include ./train.txt ./val.txt ./test.txt ")

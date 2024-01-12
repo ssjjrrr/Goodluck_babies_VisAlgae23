@@ -2,7 +2,6 @@ import os
 import shutil
 import random
 import numpy as np
-
 import torch
 from torch.utils.data import random_split, Dataset
 
@@ -172,11 +171,13 @@ class RandomGenAugmenter(torch.nn.Module):
             boxes[index, :] = torch.tensor([xmin, ymin, 
                                             xmin+image_algae_w, ymin+image_algae_h])
             labels[index] = chosen_labels[index] + 1
-            
+
             # Blend algaes into the background
             image_bg = self.blend_bg_algae(image_bg, image_algae, (xmin, ymin))
         
         image_new = image_bg
+        img_new = image_new.numpy().transpose(1, 2, 0).astype(np.uint8)
+        img_new = cv.GaussianBlur(img_new, (13, 13), 0) # 可调整核大小和标准差
         #show(image_bg)
 
         # Generate annotation
@@ -218,8 +219,7 @@ class RandomGenAugmenter(torch.nn.Module):
         image_bg_np = (image_bg_np * 255).astype(np.uint8)
 
         # Create a mask for the region
-        mask = (image_algae_np > 0).astype(np.uint8) * 255
-
+        mask = (image_algae_np < 220).astype(np.uint8) * 255
         # Convert the images to BGR format for seamlessClone
         image_algae_np = cv.cvtColor(image_algae_np, cv.COLOR_RGB2BGR)
         image_bg_np = cv.cvtColor(image_bg_np, cv.COLOR_RGB2BGR)
@@ -236,8 +236,6 @@ class RandomGenAugmenter(torch.nn.Module):
                 int(xmin_sample):int(xmin_sample) + image_algae_w] = blended_image_tensor
         return image_bg
     
-
-
 
 if __name__ == "__main__":
     algae_dataset = AlgaeDataset("train")

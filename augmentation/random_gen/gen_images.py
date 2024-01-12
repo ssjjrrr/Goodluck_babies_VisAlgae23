@@ -2,6 +2,7 @@ from utils import AlgaeDataset, RandomGenAugmenter
 import os
 from PIL import Image
 import numpy as np
+import cv2
 
 #随机读取数据集中的图片
 path_dataset = os.path.join("dataset", "train")
@@ -24,9 +25,8 @@ def gen_img(nums, save_dir, source, save=False):
         img_new = image_new.permute(1, 2, 0)
         image = Image.fromarray(img_new.numpy(), 'RGB')
         width, height = image.size
-        print(width, height)
+        # print(width, height)
         bboxes, classes = annot_new['boxes'][:], annot_new['labels'][:] - 1
-
         if save:
             try:
                 save_img_path = os.path.join(save_dir, f"images_generated/{img_id}.jpg")
@@ -34,31 +34,31 @@ def gen_img(nums, save_dir, source, save=False):
                 save_txt_path = os.path.join(save_dir, f"labels_generated/{img_id}.txt")
                 with open(save_txt_path, "w") as f:
                     for bbox, class_name in zip(bboxes, classes):
-                        bbox = xyxy2xywh(bbox)
+                        bbox = xyxy2xywh(bbox, width, height)
                         # print(class_name, bbox)
 
                         class_name = class_name.item()
                         bbox = [b.item() for b in bbox]
                         data_str = f"{class_name} " + " ".join([f"{b:f}" for b in bbox]) + "\n"
                         f.write(data_str)
-                print(f"image {img_id} saved at {save_dir}!")
+                print(f"image {img_id} saved at {save_dir}")
             except RuntimeError:
                 print("save failed!")
             
                 
 
-def xyxy2xywh(bbox_xyxy):
+def xyxy2xywh(bbox_xyxy, width, height):
     x_min, y_min, x_max, y_max = bbox_xyxy
-    x_c = (x_min + x_max) / 2
-    y_c = (y_min + y_max) / 2
-    w = x_max - x_min
-    h = y_max - y_min
+    x_c = (x_min + x_max) / (2 * width)
+    y_c = (y_min + y_max) / (2 * height)
+    w = (x_max - x_min) / width
+    h = (y_max - y_min) / height
     return [x_c, y_c, w, h]
 
 
 
 if __name__ == "__main__":
-    img_nums = 1
+    img_nums = 300
     save_dir = 'augmentation/random_gen/generated'
 
     path_gen_src = 'augmentation/random_gen/gen_augmenter_src'
