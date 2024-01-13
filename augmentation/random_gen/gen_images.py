@@ -58,8 +58,8 @@ def xyxy2xywh(bbox_xyxy, width, height):
 
 
 if __name__ == "__main__":
-    img_nums = 300
-    save_dir = 'augmentation/random_gen/generated'
+    img_nums = 700
+    save_dir = 'D:/Goodluck_babies_VisAlgae23/aug_dataset/generated'
 
     path_gen_src = 'augmentation/random_gen/gen_augmenter_src'
 
