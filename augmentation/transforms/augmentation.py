@@ -42,7 +42,7 @@ class DataAugmentForObjectDetection():
                  crop_rate=0.5, shift_rate=0.5, change_light_rate=0.5,
                  add_noise_rate=0.5, flip_rate=0.5,
                  cutout_rate=0.5, cut_out_length=50, cut_out_holes=1, cut_out_threshold=0.5,
-                 is_addNoise=False, is_changeLight=False, is_cutout=True, is_rotate_img_bbox=True,
+                 is_addNoise=False, is_changeLight=False, is_cutout=False, is_rotate_img_bbox=True,
                  is_crop_img_bboxes=True, is_shift_pic_bboxes=True, is_filp_pic_bboxes=True):
  
         # 配置各个操作的属性
@@ -483,7 +483,7 @@ class ToolHelper():
  
 if __name__ == '__main__':
  
-    need_aug_num = 5  # 每张图片需要增强的次数
+    need_aug_num = 1  # 每张图片需要增强的次数
  
     is_endwidth_dot = True  # 文件是否以.jpg或者png结尾
  
