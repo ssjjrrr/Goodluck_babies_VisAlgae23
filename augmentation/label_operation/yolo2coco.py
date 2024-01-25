@@ -14,14 +14,14 @@ from sklearn.model_selection import train_test_split
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--root_dir', default='D:/Goodluck_babies_VisAlgae23/aug_dataset',type=str, help="root path of images and labels, include ./images and ./labels and classes.txt")
-parser.add_argument('--save_path', type=str,default='./train.json', help="if not split the dataset, give a path to a json file")
-parser.add_argument('--random_split', action='store_true', help="random split the dataset, default ratio is 8:1:1")
+parser.add_argument('--root_dir', default='D:/Goodluck_babies_VisAlgae23/aug_dataset/main',type=str, help="root path of images and labels, include ./images and ./labels and classes.txt")
+parser.add_argument('--save_path', type=str,default='D:/Goodluck_babies_VisAlgae23/aug_dataset/main/annotations', help="if not split the dataset, give a path to a json file")
+parser.add_argument('--random_split',default= True, action='store_true', help="random split the dataset, default ratio is 8:1:1")
 parser.add_argument('--split_by_file', action='store_true', help="define how to split the dataset, include ./train.txt ./val.txt ./test.txt ")
 
 arg = parser.parse_args()
 
-def train_test_val_split_random(img_paths,ratio_train=0.8,ratio_test=0.1,ratio_val=0.1):
+def train_test_val_split_random(img_paths,ratio_train=0.9,ratio_test=0,ratio_val=0.1):
     # 这里可以修改数据集划分的比例。
     assert int(ratio_train+ratio_test+ratio_val) == 1
     train_img, middle_img = train_test_split(img_paths,test_size=1-ratio_train, random_state=233)
@@ -71,7 +71,7 @@ def yolo2coco(arg):
             
         if arg.random_split:
             print("spliting mode: random split")
-            train_img, val_img, test_img = train_test_val_split_random(indexes,0.8,0.1,0.1)
+            train_img, val_img, test_img = train_test_val_split_random(indexes,0.89,0.1,0.01)
         elif arg.split_by_file:
             print("spliting mode: split by files")
             train_img, val_img, test_img = train_test_val_split_by_files(indexes, root_path)
