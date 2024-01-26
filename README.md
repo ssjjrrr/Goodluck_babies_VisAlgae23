@@ -1,5 +1,4 @@
 # Goodluck_babies_VisAlgae23
 
-code for the "vision meets algae" competetion
+code for "vision meets algae" competetion
 
-## start
