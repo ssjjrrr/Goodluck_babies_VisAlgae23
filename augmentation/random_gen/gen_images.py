@@ -14,7 +14,7 @@ algae_dataset = AlgaeDataset(path_dataset)
 def gen_img(nums, save_dir, source, save=False):
     for i in range(nums):
         
-        img_id = i + 1001
+        img_id = i + 1201
         augmenter = RandomGenAugmenter(src_root=source)
         image_new, annot_new = augmenter(img_id)
         
@@ -29,9 +29,9 @@ def gen_img(nums, save_dir, source, save=False):
         bboxes, classes = annot_new['boxes'][:], annot_new['labels'][:] - 1
         if save:
             try:
-                save_img_path = os.path.join(save_dir, f"images_generated/{img_id}.jpg")
+                save_img_path = os.path.join(save_dir, f"images/{img_id}.jpg")
                 image.save(save_img_path)
-                save_txt_path = os.path.join(save_dir, f"labels_generated/{img_id}.txt")
+                save_txt_path = os.path.join(save_dir, f"labels/{img_id}.txt")
                 with open(save_txt_path, "w") as f:
                     for bbox, class_name in zip(bboxes, classes):
                         bbox = xyxy2xywh(bbox, width, height)
@@ -58,10 +58,10 @@ def xyxy2xywh(bbox_xyxy, width, height):
 
 
 if __name__ == "__main__":
-    img_nums = 700
-    save_dir = 'D:/Goodluck_babies_VisAlgae23/aug_dataset/generated'
+    img_nums = 400
+    save_dir = 'D:/Goodluck_babies_VisAlgae23/aug_dataset/main'
 
-    path_gen_src = 'augmentation/random_gen/gen_augmenter_src'
+    path_gen_src = 'D:/Goodluck_babies_VisAlgae23/labelled_src'
 
     gen_img(img_nums, save_dir, path_gen_src, save=True)
 

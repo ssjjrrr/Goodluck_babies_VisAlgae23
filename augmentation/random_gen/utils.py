@@ -177,7 +177,7 @@ class RandomGenAugmenter(torch.nn.Module):
         
         image_new = image_bg
         img_new = image_new.numpy().transpose(1, 2, 0).astype(np.uint8)
-        img_new = cv.GaussianBlur(img_new, (5, 5), 0) # 可调整核大小和标准差
+        #img_new = cv.GaussianBlur(img_new, (5, 5), 0) # 可调整核大小和标准差
         #show(image_bg)
 
         # Generate annotation
@@ -213,12 +213,12 @@ class RandomGenAugmenter(torch.nn.Module):
                     int(ymin_sample):int(ymin_sample)+image_algae_h, 
                     int(xmin_sample):int(xmin_sample)+image_algae_w].cpu().numpy().transpose(1, 2, 0)
         image_algae_np = image_algae.cpu().numpy().transpose(1, 2, 0)
-        print(image_algae_np)
+        #print(image_algae_np)
         # Convert the images to uint8 format for seamlessClone
         image_algae_np = (image_algae_np ).astype(np.uint8)
         image_bg_np = (image_bg_np ).astype(np.uint8)
         
-        print(image_algae_np)
+        #print(image_algae_np)
         # Create a mask for the region
         mask = (image_algae_np > 0).astype(np.uint8) * 255
         # Convert the images to BGR format for seamlessClone

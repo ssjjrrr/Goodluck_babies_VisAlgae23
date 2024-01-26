@@ -21,7 +21,7 @@ parser.add_argument('--split_by_file', action='store_true', help="define how to 
 
 arg = parser.parse_args()
 
-def train_test_val_split_random(img_paths,ratio_train=0.9,ratio_test=0,ratio_val=0.1):
+def train_test_val_split_random(img_paths,ratio_train=0.95,ratio_test=0,ratio_val=0.05):
     # 这里可以修改数据集划分的比例。
     assert int(ratio_train+ratio_test+ratio_val) == 1
     train_img, middle_img = train_test_split(img_paths,test_size=1-ratio_train, random_state=233)
@@ -71,7 +71,7 @@ def yolo2coco(arg):
             
         if arg.random_split:
             print("spliting mode: random split")
-            train_img, val_img, test_img = train_test_val_split_random(indexes,0.89,0.1,0.01)
+            train_img, val_img, test_img = train_test_val_split_random(indexes,0.94,0.05,0.01)
         elif arg.split_by_file:
             print("spliting mode: split by files")
             train_img, val_img, test_img = train_test_val_split_by_files(indexes, root_path)
